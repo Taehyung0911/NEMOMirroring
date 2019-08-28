@@ -324,6 +324,7 @@
                         }
 
                         //this code
+                        //navigator.mediaDevices.getDisplayMedia({video: true}).then(stream);
                         if(navigator.mediaDevices.getDisplayMedia) {
                             navigator.mediaDevices.getDisplayMedia({video: true}).then(stream => {
                                 onGettingSteam(stream);
