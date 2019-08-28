@@ -323,6 +323,7 @@
                             document.querySelector('.hide-after-join').style.display = 'none';
                         }
 
+                        //this code
                         if(navigator.mediaDevices.getDisplayMedia) {
                             navigator.mediaDevices.getDisplayMedia({video: true}).then(stream => {
                                 onGettingSteam(stream);
