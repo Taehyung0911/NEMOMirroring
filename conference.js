@@ -323,11 +323,11 @@ iceServers = {
     iceCandidatePoolSize: 0
 };
 
-if (adapter.browserDetails.browser !== 'chrome') {
-    iceServers = {
-        iceServers: iceServers.iceServers
-    };
-}
+// if (adapter.browserDetails.browser !== 'chrome') {
+//     iceServers = {
+//         iceServers: iceServers.iceServers
+//     };
+// }
 
 var dontDuplicateOnAddTrack = {};
 
