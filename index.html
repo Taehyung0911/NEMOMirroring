@@ -160,7 +160,6 @@
                             // config.attachStream = stream;
                             callback && callback();
                             video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform']
-                            //rotateVideo(video);
 
                             addStreamStopListener(stream, function() {
                                 location.reload();
@@ -226,14 +225,7 @@
                 document.getElementById('share-screen').onclick = function() {
                     captureUserMedia(function() {
                     });
-                };
-
-                /*function rotateVideo(video) {
-                    video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform'] = 'rotate(0deg)';
-                    setTimeout(function() {
-                        video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform'] = 'rotate(360deg)';
-                    }, 1000);
-                }*/            
+                };        
             </script>
         </article>
     </body>
