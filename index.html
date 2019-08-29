@@ -1,11 +1,3 @@
-<!-- Demo version: 2019.04.08 -->
-
-<!--
-> Muaz Khan     - https://github.com/muaz-khan
-> MIT License   - https://www.webrtc-experiment.com/licence/
-> Documentation - https://github.com/muaz-khan/WebRTC-Experiment/tree/master/Pluginfree-Screen-Sharing
--->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -88,16 +80,6 @@
         <!-- <script src="BandwidthHandler.js"></script> -->
         <!-- <script src="IceServersHandler.js"></script> -->
         <script src="conference.js"> </script> <!--showMessage-->
-
-        <!--
-        <script src="https://www.webrtc-experiment.com/socket.io.js"> </script>
-        <script src="https://www.webrtc-experiment.com/DetectRTC.js"></script>
-        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-        <script src="https://www.webrtc-experiment.com/CodecsHandler.js"></script>
-        <script src="https://www.webrtc-experiment.com/BandwidthHandler.js"></script>
-        <script src="https://www.webrtc-experiment.com/IceServersHandler.js"></script>
-        <script src="https://www.webrtc-experiment.com/Pluginfree-Screen-Sharing/conference.js"> </script>
-        -->
     </head>
 
     <body>
@@ -106,37 +88,11 @@
                 <h1>
                     Sample Screen Sharing using WebRTC
                 </h1>
-                <!--                 
-                <p>
-                    <a href="https://www.webrtc-experiment.com/">HOME</a>
-                    <span> &copy; </span>
-                    <a href="https://MuazKhan.com/" target="_blank">Muaz Khan</a>
-
-                    .
-                    <a href="http://twitter.com/WebRTCWeb" target="_blank" title="Twitter profile for WebRTC Experiments">@WebRTCWeb</a>
-
-                    .
-                    <a href="https://github.com/muaz-khan?tab=repositories" target="_blank" title="Github Profile">Github</a>
-
-                    .
-                    <a href="https://github.com/muaz-khan/WebRTC-Experiment/issues?state=open" target="_blank">Latest issues</a>
-
-                    .
-                    <a href="https://github.com/muaz-khan/WebRTC-Experiment/commits/master" target="_blank">What's New?</a>
-                </p>
-                -->
             </header>
-            
-            <!--
-            <div class="github-stargazers"></div>
-
-            <h2 style="display: block;text-align: center;border:0;margin-bottom:0;">High Quality screen sharing application using <a href="https://www.webrtc-experiment.com/">WebRTC</a>!</h2>
-            -->
 
             <section id="logs-message" class="experiment" style="display: none;text-align: center;font-size: 1.5em;line-height: 2;color: red;">WebRTC getDisplayMedia API.</section>
             <section id="channel-info" class="experiment" style="display: none;text-align: center;font-size: 1.5em;line-height: 2;color: red;">Channel Info</section>
 
-            <!-- just copy this <section> and next script -->
             <section class="experiment">
                 <section class="hide-after-join" style="text-align: center;">                    
                     <input type="text" id="room-name" placeholder="Enter " style="width: 80%; text-align: center; display: none;">
@@ -152,110 +108,6 @@
             </section>
 
             <script>
-                // Muaz Khan     - https://github.com/muaz-khan
-                // MIT License   - https://www.webrtc-experiment.com/licence/
-                // Documentation - https://github.com/muaz-khan/WebRTC-Experiment/tree/master/Pluginfree-Screen-Sharing
-                
-                /*var config = {
-                    // via: https://github.com/muaz-khan/WebRTC-Experiment/tree/master/socketio-over-nodejs
-                    openSocket: function(config) {
-                        //var SIGNALING_SERVER = 'https://localhost:9002/';
-                        //###########This##########//
-                        //var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
-
-                        //new
-                        showMessage('Click \"Share Your Screen\" Button');
-                        
-                        //config.channel = config.channel || location.href.replace(/\/|:|#|%|\.|\[|\]/g, '');
-                        //var sender = Math.round(Math.random() * 999999999) + 999999999;
-
-                        // io.connect(SIGNALING_SERVER).emit('new-channel', {
-                        //     channel: config.channel,
-                        //     sender: sender
-                        // });
-
-                        //showChannelInfo('Channel Info: ' + config.channel + '<br>' +'Sender Info: ' + sender, 'green');
-
-                        //var socket = io.connect(SIGNALING_SERVER + config.channel);
-                        //socket.channel = config.channel;
-                        // socket.on('connect', function () {
-                        //     if (config.callback) config.callback(socket);
-                        // });
-
-                        //showChannelInfo1('Socket: ' + SIGNALING_SERVER + config.channel, 'green');
-
-                        // socket.send = function (message) {
-                        //     socket.emit('message', {
-                        //         sender: sender,
-                        //         data: message
-                        //     });
-                        // };
-
-                        // socket.on('message', config.onmessage);
-
-                        //showChannelInfo2('message: ' + config.onmessage);
-                        
-                    }/*,
-                    onRemoteStream: function(media) {
-                        if(isbroadcaster) return;
-
-                        var video = media.video;
-                        videosContainer.insertBefore(video, videosContainer.firstChild);
-                        rotateVideo(video);
-
-                        document.querySelector('.hide-after-join').style.display = 'none';
-                    },
-                    onRoomFound: function(room) {
-                        if(isbroadcaster) return;
-
-                        conferenceUI.joinRoom({
-                            roomToken: room.roomToken,
-                            joinUser: room.broadcaster
-                        });
-
-                        document.querySelector('.hide-after-join').innerHTML = '<img src="https://www.webrtc-experiment.com/images/key-press.gif" style="margint-top:10px; width:50%;" />';
-                    },
-                    onNewParticipant: function(numberOfParticipants) {
-                        var text = numberOfParticipants + ' users are viewing your screen!';
-                        
-                        if(numberOfParticipants <= 0) {
-                            text = 'No one is viewing your screen YET.';
-                        }
-                        else if(numberOfParticipants == 1) {
-                            text = 'Only one user is viewing your screen!';
-                        }
-
-                        //document.title = text;
-                        showMessage(document.title, 'green');
-                    },
-                    oniceconnectionstatechange: function(state) {
-                        var text = '';
-
-                        if(state == 'closed' || state == 'disconnected') {
-                            text = 'One of the participants just left.';
-                            //document.title = text;
-                            showMessage(document.title);
-                        }
-
-                        if(state == 'failed') {
-                            text = 'Failed to bypass Firewall rules. It seems that target user did not receive your screen. Please ask him reload the page and try again.';
-                            //document.title = text;
-                            showMessage(document.title);
-                        }
-
-                        if(state == 'connected' || state == 'completed') {
-                            text = 'A user successfully received your screen.';
-                            //document.title = text;
-                            showMessage(document.title, 'green');
-                        }
-
-                        if(state == 'new' || state == 'checking') {
-                            text = 'Someone is trying to join you.';
-                            //document.title = text;
-                            showMessage(document.title, 'green');
-                        }
-                    }
-                };*/
 
                 function showMessage(error, color) {
                     var errorMessage = document.querySelector('#logs-message');
@@ -280,7 +132,6 @@
                         showMessage(error.toString());
                     }
                 }
-
 
                 //This is core code!
                 function captureUserMedia(callback) {
@@ -367,23 +218,14 @@
                     cancelToken.style.display = 'block';
                 }
 
-                /* on page load: get public rooms */
-                //var conferenceUI = conference(config);
-
                 showMessage('Click \"Share Your Screen\" Button');
 
                 /* UI specific */
                 var videosContainer = document.getElementById("videos-container") || document.body;
 
                 document.getElementById('share-screen').onclick = function() {
-                    //var roomName = document.getElementById('room-name') || { };
-                    //roomName.disabled = true;
                     captureUserMedia(function() {
-                        /*conferenceUI.createRoom({
-                            roomName: (roomName.value || 'Anonymous') + ' shared his screen with you'
-                        });*/
                     });
-                    //this.disabled = true;
                 };
 
                 /*function rotateVideo(video) {
@@ -392,54 +234,7 @@
                         video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform'] = 'rotate(360deg)';
                     }, 1000);
                 }*/            
-
-                // function showPrivateLink() {
-                //     var uniqueToken = document.getElementById('unique-token');
-                //     uniqueToken.innerHTML = '<a href="' + location.href + '" target="_blank">Copy & Share This Private Room Link</a>';
-                //     uniqueToken.style.display = 'block';
-                // }
-
             </script>
-
-            <!--
-            <section class="experiment">
-                <h2 id="advantages">
-                    <a href="#advantages">Advantages</a>
-                </h2>
-                <ol>
-                    <li>As of 2019, this demo is now 100% Plugin-free!! Believe that! No Chrome extension! No Firefox addon!</li>
-                    <li>Share screen from Chrome, Firefox or Edge. Safari support is coming soon.</li>
-                    <li>
-                        You can open private i.e. secure rooms:<br /><br />
-                        <ol>
-                            <li>Use hashes to open private rooms: <strong>#private-room</strong></li>
-                            <li>Use URL parameters to open private rooms: <strong>?private=room</strong></li>
-                        </ol>
-                    </li>
-                    <li>Upto 10 people can view your screen. System restrictions (CPU/RAM) still applies.</li>
-                </ol>
-            </section>
-
-            <section class="experiment"><small id="send-message"></small></section>
-            -->            
-            
         </article>
-        
-        <!--
-        <a href="https://github.com/muaz-khan/WebRTC-Experiment/tree/master/Pluginfree-Screen-Sharing" class="fork-left"></a>
-        -->
-
-        <!--
-        <footer>
-            <p>
-                <a href="https://www.webrtc-experiment.com/">WebRTC Experiments</a>
-                © <a href="https://plus.google.com/+MuazKhan" rel="author" target="_blank">Muaz Khan</a>
-                <a href="mailto:muazkh@gmail.com" target="_blank">muazkh@gmail.com</a>
-            </p>
-        </footer>
-        -->
-
-        <!-- commits.js is useless for you! -->
-        <script src="commits.js" async> </script>
     </body>
 </html>
