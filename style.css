@@ -447,8 +447,8 @@ pre {
     }
 
     article {
-        margin: 1.5em auto 0 auto;
-        padding: 1.5em;
+        margin: 0;
+        padding: 0;
     }
 
     .experiment {
