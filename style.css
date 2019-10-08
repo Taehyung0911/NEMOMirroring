@@ -11,17 +11,15 @@ body {
 
 article, footer {
     display: block;
-    max-width: 900px;
-    min-width: 360px;
-    width: 80%;
+    width: 100%;
 }
 
 article {
     background: #fff;
     border: 1px solid;
     border-color: #ddd #aaa #aaa #ddd;
-    margin: 2.5em auto 0 auto;
-    padding: 2em;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
