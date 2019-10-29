@@ -70,13 +70,8 @@
             document.createElement('footer');
         </script>
 
-        <!-- scripts used for screen-sharing -->
+        <!-- scripts used for NEMOMirroring -->
         <script src="socket.io.js"> </script> <!--Share Your Screen-->
-        <!-- <script src="DetectRTC.js"></script> -->
-        <!-- <script src="adapter-latest.js"></script> -->
-        <!-- <script src="CodecsHandler.js"></script> -->
-        <!-- <script src="BandwidthHandler.js"></script> -->
-        <!-- <script src="IceServersHandler.js"></script> -->
         <script src="conference.js"> </script> <!--showMessage-->
     </head>
 
@@ -101,8 +96,6 @@
                 <div id="videos-container"></div>
 
                 <section id="cancel" style="display: none; text-align: center;"></section>
-
-                <!-- <section id="unique-token" style="display: none; text-align: center; padding: 20px;"></section> -->
             </section>
 
             <script>
@@ -155,7 +148,6 @@
                                 location.reload();
                             });
 
-                            // config.attachStream = stream;
                             callback && callback();
                             video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform']
 
@@ -171,8 +163,6 @@
                             document.querySelector('.hide-after-join').style.display = 'none';
                         }
 
-                        //this code
-                        //navigator.mediaDevices.getDisplayMedia({video: true}).then(stream);
                         if(navigator.mediaDevices.getDisplayMedia) {
                             navigator.mediaDevices.getDisplayMedia({video: true}).then(stream => {
                                 onGettingSteam(stream);
